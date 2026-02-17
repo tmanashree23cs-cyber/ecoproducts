@@ -8,7 +8,7 @@ const app = express();
 /* ================= DATABASE CONNECTION ================= */
 
 // ✅ Use db.js connection
-const db = require('./db');
+const db = require('./config/db');
 
 /* ================= MIDDLEWARE ================= */
 
