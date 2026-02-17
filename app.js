@@ -2,29 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-const mysql = require('mysql2');
 
 const app = express();
 
 /* ================= DATABASE CONNECTION ================= */
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',              // your MySQL username
-    password: 'root75', // 🔴 put your MySQL password
-    database: 'eco_store'
-});
-
-db.connect((err) => {
-    if (err) {
-        console.error('Database connection failed:', err);
-    } else {
-        console.log('✅ MySQL Connected...');
-    }
-});
-
-// Make db accessible in routes
-module.exports.db = db;
+// ✅ Use db.js connection
+const db = require('./db');
 
 /* ================= MIDDLEWARE ================= */
 
