@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Billing</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="form-box billing-box"> 
+
+    <h2 class="billing-title">Billing Details</h2>
+
+    <div class="product-summary">
+        <h3><%= product.product_name %></h3>
+        <div class="divider"></div>
+        <p class="price-text">Price: ₹ <%= product.price %></p>
+        <p class="qty-text">Quantity: <%= quantity %></p>
+        <p class="total-text">
+            Total: ₹ <%= product.price * quantity %>
+        </p>
+    </div>
+
+    <form method="POST" action="/confirm-order/<%= product.product_id %>">
+        
+        <!-- Hidden Quantity Field -->
+        <input type="hidden" name="quantity" value="<%= quantity %>">
+
+        <div class="payment-box">
+            <strong>Payment Method:</strong>
+            <p>Cash on Delivery</p>
+        </div>
+
+        <button type="submit" class="confirm-btn">Confirm Order</button>
+    </form>
+
+</div>
+
+</body>
+</html>

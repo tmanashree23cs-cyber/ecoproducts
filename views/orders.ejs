@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Orders</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2 class="page-title">📦 My Orders</h2>
+
+<table>
+<tr>
+<th>Product</th>
+<th>Order Date</th>
+<th>Delivery Date</th>
+<th>Total Amount</th>
+</tr>
+
+<% orders.forEach(o => { %>
+<tr>
+<td><%= o.product_name %></td>
+
+<td>
+<%= new Date(o.order_date).toISOString().slice(0,10) %>
+</td>
+
+<td>
+<% if(o.delivery_date){ %>
+    <%= new Date(o.delivery_date).toISOString().slice(0,10) %>
+<% } else { %>
+    Pending
+<% } %>
+</td>
+
+<td>₹ <%= o.total_amount %></td>
+
+</tr>
+<% }) %>
+
+</table>
+
+<a class="back-btn" href="/store">Back to Store</a>
+
+</body>
+</html>

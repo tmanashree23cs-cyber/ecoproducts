@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1 class="page-title">Admin Dashboard</h1>
+
+<a class="btn" href="/add-product">Add New Product</a>
+<a class="btn logout-btn" href="/admin/logout">Logout</a>
+
+<div class="product-container">
+<% products.forEach(p => { %>
+<div class="product-card">
+<h3><%= p.product_name %></h3>
+<p>₹ <%= p.price %></p>
+<p>Qty: <%= p.quantity %></p>
+<a class="delete-btn" href="/delete-product/<%= p.product_id %>">Delete</a>
+</div>
+<% }) %>
+</div>
+
+</body>
+</html>

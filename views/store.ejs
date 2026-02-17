@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Store</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1 class="page-title">🌿 Our Eco Products</h1>
+
+<form method="POST" action="/confirm-multiple-order">
+
+<div class="product-container">
+<% products.forEach(p => { %>
+    <div class="product-card">
+        <h3><%= p.product_name %></h3>
+        <p><%= p.description %></p>
+        <p class="price">₹ <%= p.price %></p>
+        <p class="stock">Available: <%= p.quantity %></p>
+
+        <% if(p.quantity > 0) { %>
+
+            <input type="checkbox" 
+                   name="products" 
+                   value="<%= p.product_id %>">
+
+            <label>Select</label>
+
+            <br><br>
+
+            <label>Quantity</label>
+            <input 
+                type="number" 
+                name="quantity_<%= p.product_id %>" 
+                min="1" 
+                max="<%= p.quantity %>" 
+                value="1"
+            >
+
+        <% } else { %>
+            <p style="color:red; font-weight:bold;">Out of Stock</p>
+        <% } %>
+
+    </div>
+<% }) %>
+</div>
+
+<br>
+<div style="text-align:center;">
+    <button type="submit" class="btn">Confirm Selected Products</button>
+</div>
+
+</form>
+
+<a class="back-btn" href="/orders">View My Orders</a>
+
+</body>
+</html>
